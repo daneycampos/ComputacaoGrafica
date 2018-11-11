@@ -1,7 +1,11 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 //alguma coisa
-
+<<<<<<< HEAD
+//teste02
+=======
+// pra garantir
+>>>>>>> 983bd8742953849d31a52a3931e725c6dce49ee5
 void Desenha(void){
 
     glClearColor(1,1,1,0);
