@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 //alguma coisa
+//teste02
 void Desenha(void){
 
     glClearColor(1,1,1,0);
