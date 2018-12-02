@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 
+
+
 void Desenha(void){
     printf("Callback de redesenho da tela");
-
-    //define a cor de fundo como azul
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     //limpa a tela de visualizaçao com a cor de fundo
     glClear(GL_COLOR_BUFFER_BIT);
     //exibe na tela
@@ -71,12 +70,15 @@ void MenuCor(int op){
     switch(op){
         case 0:
             printf("Vermelho");
+            glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             break;
         case 1:
             printf("Verde");
+            glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
             break;
         case 2:
             printf("Azul");
+            glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
             break;
     }
     glutPostRedisplay();
@@ -98,6 +100,13 @@ void MenuPrimitiva(int op){
 }
 
 void MenuPrincipal(int op){
+    switch(op){
+        case 0:
+            glutFullScreen();
+            break;
+    }
+
+    glutPostRedisplay();
 }
 
 void CriaMenu(){
@@ -113,12 +122,13 @@ void CriaMenu(){
     submenu2 = glutCreateMenu(MenuPrimitiva);
     glutAddMenuEntry("Triangulo", 0);
     glutAddMenuEntry("Quadrado", 1);
-    glutAddMenuEntry("Cicrculo", 2);
+    glutAddMenuEntry("Circulo", 2);
 
     //menu principal
     menu = glutCreateMenu(MenuPrincipal);
     glutAddSubMenu("Cor", submenu1);
     glutAddSubMenu("Primitiva", submenu2);
+    glutAddMenuEntry("Tela Cheia", 0);
 
     //associa botao direito do mouse
     glutAttachMenu(GLUT_RIGHT_BUTTON);
@@ -130,7 +140,6 @@ void Inicializa(void){
     gluOrtho2D(-1.0,1.0,-1.0,1.0);
     glMatrixMode(GL_MODELVIEW);
 }
-
 
 int main(int argc, char *argv[] ){
     glutInit(&argc,argv);
